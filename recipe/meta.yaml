@@ -1,5 +1,5 @@
 {% set name = "munge" %}
-{% set version = "0.5.13" %}
+{% set version = "0.5.14" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/dun/munge/releases/download/{{ name }}-{{ version }}/{{ name }}-{{ version }}.tar.xz
-  sha256: 99753dfd06a4f063c36f3fb0eb1964f394feb649937d94c4734d85b7964144da
+  sha256: 6606a218f18090fa1f702e3f6fb608073eb6aafed534cf7dd81b67b2e0d30640
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 0
   skip: true  # [win]
 
 requirements:
