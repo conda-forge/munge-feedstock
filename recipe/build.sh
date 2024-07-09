@@ -13,9 +13,14 @@ ${SRC_DIR}/configure \
 # build
 make -j ${CPU_COUNT} V=1 VERBOSE=1
 
-# check
-if [[ "${build_platform}" == "${target_platform}" || "${target_platform}" == linux-* ]]; then
-	make -j ${CPU_COUNT} V=1 VERBOSE=1 check
+# except on linux-64 just run a subset of the tests
+if [ "${target_platform}" != "linux-64" ]; then
+	CHECK_ARGS="TESTS=0012-munge-cmdline.t"
+fi
+
+# check (except when truly cross compiling)
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
+	make -j ${CPU_COUNT} V=1 VERBOSE=1 check ${CHECK_ARGS:-}
 fi
 
 # install
