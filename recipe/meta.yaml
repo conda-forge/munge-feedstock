@@ -28,6 +28,10 @@ requirements:
 test:
   commands:
     - munge --help
+    - munge --version
+    - munge --list-ciphers
+    - munge --list-macs
+    - munge --list-zips
     - remunge --help
     - unmunge --help
 
