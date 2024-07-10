@@ -5,7 +5,11 @@ bzip2:
 c_compiler:
 - gcc
 c_compiler_version:
-- '9'
+- '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.17'
 cdt_arch:
 - aarch64
 cdt_name:
@@ -17,13 +21,11 @@ channel_targets:
 docker_image:
 - quay.io/condaforge/linux-anvil-aarch64
 openssl:
-- 1.1.1
-pin_run_as_build:
-  bzip2:
-    max_pin: x
-  zlib:
-    max_pin: x.x
+- '3'
 target_platform:
 - linux-aarch64
+zip_keys:
+- - c_stdlib_version
+  - cdt_name
 zlib:
-- '1.2'
+- '1'

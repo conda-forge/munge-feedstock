@@ -1,5 +1,5 @@
 {% set name = "munge" %}
-{% set version = "0.5.13" %}
+{% set version = "0.5.15" %}
 
 package:
   name: {{ name|lower }}
@@ -7,17 +7,18 @@ package:
 
 source:
   url: https://github.com/dun/munge/releases/download/{{ name }}-{{ version }}/{{ name }}-{{ version }}.tar.xz
-  sha256: 99753dfd06a4f063c36f3fb0eb1964f394feb649937d94c4734d85b7964144da
+  sha256: 3f979df117a34c74db8fe2835521044bdeb08e3b7d0f168ca97c3547f51da9ba
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
-  skip: true  # [win]
+  number: 0
+  skip: true  # [not linux]
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - make  # [unix]
   host:
     - bzip2
@@ -27,6 +28,10 @@ requirements:
 test:
   commands:
     - munge --help
+    - munge --version
+    - munge --list-ciphers
+    - munge --list-macs
+    - munge --list-zips
     - remunge --help
     - unmunge --help
 
