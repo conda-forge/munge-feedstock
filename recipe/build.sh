@@ -8,6 +8,7 @@ pushd _build
 # configure
 ${SRC_DIR}/configure \
 	--prefix=${PREFIX} \
+	--with-munge-socket="/var/run/munge/munge.socket.2" \
 	--with-crypto-lib=openssl \
 	--with-openssl-prefix=${PREFIX} \
 ;
